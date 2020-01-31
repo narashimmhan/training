@@ -1,0 +1,186 @@
+1.
+a = "simma" 
+a = "simma"[::-1]
+print(a)
+ 
+2.  
+b = "SimMa"
+print(b.swapcase())
+
+3.  
+a="accenture"
+b=set(a)
+for i in b:
+    c=a.count(i)
+    print(str(i),"-",str(c))
+
+a="accenture"
+b={}
+for i in a:
+    if i in b:
+        b[i]+=1
+    else:
+        b[i]=1
+print(b)
+
+4. 
+for i in range(1,51):
+    print(i)
+    if i % 2  == 0:
+        print("EVEN :" ,i)
+    else:
+        print("ODD :" ,i)
+        
+5. 
+for i in range(1,51):
+    if i%3 ==0 and i%5 == 0:
+        print(i, "fizz-buzz")
+    elif i %3 == 0: 
+        print(i , "fizz")
+    elif i % 5 == 0:
+        print(i , "buzz")
+
+    else: 
+        print(i)
+        
+6.
+vowel = "aeiou"
+a = "accenture"
+for i in a: 
+    count = 0
+    if i in vowel:     
+        count=a.count(i)
+        print(i,count)
+
+vowel = "aeiou"
+a = "accenture"
+b={}
+
+for i in a: 
+    if i in vowel:
+        if i in b:
+            b[i]+=1
+        else:
+            b[i]=1
+print(b)
+
+7. 
+aa = "ga24nbv2k6jg523jg2545lsfwe"
+sum = 0
+bb = []
+for i in aa:
+    if i.isdigit():
+        sum = sum + int(i)
+    else: 
+        bb.append(i)
+print("Sum is :",sum," Characters is : ",bb)
+
+8.
+a = []
+for i in range(1,11):
+    a.append(i)
+print(a)
+n = len(a)
+sum = 9
+for i in range(0,n):
+    for j in range(0,n):
+        if(a[i]+a[j] == sum):
+            print(a[i]," ", a[j])  
+  
+9. 
+a = "add"
+b = "dad"
+if(sorted(a)==sorted(b)):
+    print("it is anagram" )
+else:
+    print("it is not an anagram")
+
+10.
+a = 9 
+for i in range(2,int(a/2)):
+    if a%i == 0:
+        print("its not a prime")
+        break
+else:
+    print("its a prime")
+
+11. 
+abc = (1,2,3,4,5)
+aa = list(abc)
+aa.append(6)
+print(tuple(aa))
+
+12. 
+a = input()
+rev = a[::-1]
+if a == rev:
+    print("it is palindrome " )
+else:
+    print("it is not palindrome ")
+
+13. 
+a = 2
+for i in range(0,11):
+    print(a ," x ", i, " = ", a*i)
+
+14. 
+n1 =0
+n2 =1 
+n =0
+while(n<50):
+    print(n)
+    n = n1 +n2
+    n1 = n2
+    n2 = n 
+    
+15. 
+aa = []
+input = "green-red-yellow-black-white"
+for i in input.split("-"):
+    aa.append(i)
+aa.sort()
+print('-'.join(aa))
+
+16. 
+lis = [1,2,3,3,3,3,4,5]
+lis1 = []
+for i in lis:
+    if i not in lis1:
+        lis1.append(i)    
+print(lis1)
+
+17. 
+ref = "abcdefghijklmnopqrstuvwxyz"
+line = "the quick brown fox jumps over the lazy dog"
+for i in ref:
+    if i not in line:
+        print("it is not a pangram")
+        break;
+else: 
+    print("it is a pangram")
+
+18. 
+a = []
+for i in range(0,5):
+	aa = int(input())
+	a.append(aa)
+for i in range(a):
+    if a[i] %2 != 0:
+        print(a[i])
+else 
+    print("effect")
+
+19. 
+r = int(input("Enter the radius"))
+area = 3.14*r*r
+print(area)   
+
+20. 
+def fact(n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return n * fact(n-1)
+print(fact(5))
+
+

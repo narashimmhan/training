@@ -1,0 +1,101 @@
+
+1.
+a=int(input())
+b=int(input())
+def gcd(a, b):
+    if b == 0:
+        return a
+    r = a % b
+    return gcd(b, r)
+    
+print(gcd(a,b))
+
+2.
+def pwr(a, b):
+    while a % b == 0:
+        if a == b:
+            return True
+        a /= b
+    return False
+
+print(pwr(6, 2))
+print(pwr(8, 2))
+
+3.
+a=int(input())
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)       
+
+def factorialR(n):
+    r = 1
+    for i in range(2,n+1):
+        r *= i
+    return r
+print(factorial(a))
+print(factorialR(a))
+
+
+5.
+def sumDigits(s):
+    sum=0
+    for i in s:
+        if i.isdigit():
+            sum+=int(i)
+    return sum
+print(sumDigits("a2b3c"))
+
+6.
+def findAnEven(l):
+    for i in l:
+        if i%2==0:
+            return i
+    else:
+        return "odd"
+try:
+    l=[5,1,7,3,73]
+    print(findAnEven(l))
+except:
+    print("error")
+
+7.
+a=input()
+def palindrome(a):
+    bb = ""
+    aa=a.lower()
+    for i in aa:
+        if i.isalpha(): 
+            bb = bb+i
+    #print(bb[::-1])
+    if bb == bb[::-1]:
+        print("palindrome")
+    else:
+        print("not a palindrome")
+palindrome(a)
+
+8.
+import math
+def eval_loop(num):
+    return math.sqrt(num)
+while 1:
+    val = input("enter the number")
+    if val == "done":
+        print("last output" , eval_loop(val1))
+        break
+    elif val.isdigit():
+        val1=int(val)
+        print(eval_loop(int(val)))
+    else:
+        print("enter the integer")
+
+9.
+def NewtonSqrt(a,b):
+   return  (b + a/b) / 2
+
+a1=4.0
+b1=3.0
+print(NewtonSqrt(a1,b1))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
