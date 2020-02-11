@@ -1,0 +1,59 @@
+def curr(amount,a5):
+    cur= int(amount)/float(a5)
+    return cur
+def timee(a2):
+    import datetime
+    from datetime import timedelta
+    a=str(a2)
+    x=datetime.datetime.now()
+    for i in a:
+        if i == "-":
+            ref1=a.split("-")
+            t=ref1[1]
+            tt=float(t)*60
+            tem=x-timedelta(0,0,0,0,tt)
+            break
+        elif i == "+":
+            ref2=a.split("+")
+            t=ref2[1]
+            tt=float(t)*60
+            tem=x+timedelta(0,0,0,0,tt)
+            break
+    return tem
+
+country=["UK","USA","INDIA","MEXICO","AUSTRALIA"]
+time_zone=["GMT","EST","IST","CST","AEDT"]
+time=["GMT-5.5","EST-10.5","IST+0.0","CST-11.5","AEDT+5.5"]
+currency=["Pound","USD","INR","USD","AUD"]
+language=["English","Engish","Hindi","Spanish","English"]
+currency_rate=["92.72","71.32","1","71.32","47.73"]
+
+cname=input("Enter country name from (uk,usa,mexico,australia):")
+amount=int(input("Enter amountin INR:"))
+
+temp = []
+mapped = zip(country,time_zone,time,currency,language,currency_rate)
+mapp=list(mapped)
+# print(mapp)
+
+for i in country:
+    if cname==i:
+        for j in range(0,len(country)):
+            if cname==country[j]:
+                temp.extend(mapp[j])
+               
+# print(temp)
+
+a0=temp[0]
+a1=temp[1]
+a2=temp[2]
+a3=temp[3]
+a4=temp[4]
+a5=temp[5]
+
+
+print("country : "+str(a0))
+print("current Time : "+str(timee(a2)))
+print("Language : "+str(a4))
+print("currency value : "+str(a5)+"INR")
+print("Equivalent Currency value for "+str(amount)+" INR : "+str(curr(amount,a5))+" "+str(a3))
