@@ -38,4 +38,18 @@ while True:
         print('On road price:',on_road)
     else:
         break
+        
+  #==========================================Output====================
+# ['NS200', 'R15', '350x', 'ninja650', 'RTR', 'ninja1000r', 'dominar']
+# Enter the model you are looking for from the above list!!! Or Done to endR15
+# Company name: yamaha
+# Bike-CC: 150
+# Showroom-Price: 1.4-L
+# On road price: 1.82-L
+# ['NS200', 'R15', '350x', 'ninja650', 'RTR', 'ninja1000r', 'dominar']
+# Enter the model you are looking for from the above list!!! Or Done to endNS200
+# Company name: bajaj
+# Bike-CC: 200
+# Showroom-Price: 1.5-L
+# On road price: 1.95-L
 
