@@ -41,15 +41,7 @@ class Student(Department):
 
     def write_stud_details(self):
         f=open("student_details.txt",'a')
-        f.write(str(self.id))
-        f.write(',')
-        f.write(self.name)
-        f.write(',')
-        f.write(self.sub)
-        f.write(',')
-        f.write(self.topic)
-        f.write(',')
-        f.write(self.teacher)
+        f.write(str(self.id)+','+str(self.name)+','+str(self.email)+','+str(self.sub)+','+str(self.topic)+','+str(self.teacher))
         f.write('\n')
         f.close()
 
