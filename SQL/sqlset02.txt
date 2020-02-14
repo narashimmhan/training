@@ -1,0 +1,116 @@
+
+					set 02
+1.
+mysql> select  name, plantid, sum(p.weight) as total_weight from picked p join plant l on p.plantfk=l.plantid where name = "corn";
++------+---------+--------------+
+| name | plantid | total_weight |
++------+---------+--------------+
+| Corn |       2 |        17.54 |
++------+---------+--------------+
+
+2.
+mysql> update picked set locationfk = (select locationid from location where name ='north') where gardenerfk in (select gardenerid from gardener  where name ="erin") and plantfk in (select plantid from plant  where name ="tomato");
+Query OK, 1 row affected (0.28 sec)
+
+mysql> select * from picked;
++---------+------------+------------+------------+--------+--------+
+| plantFK | gardenerFK | locationFK | date1      | amount | weight |
++---------+------------+------------+------------+--------+--------+
+|       0 |          2 |          0 | 2012-08-18 |     28 |   2.32 |
+|       0 |          3 |          1 | 2012-08-16 |     12 |   1.02 |
+|       2 |          1 |          3 | 2012-08-22 |     52 |  12.96 |
+|       2 |          2 |          2 | 2012-08-28 |     18 |   4.58 |
+|       3 |          3 |          1 | 2012-08-22 |     15 |   3.84 |
+|       4 |          2 |          0 | 2012-07-16 |     23 |   0.52 |
++---------+------------+------------+------------+--------+--------+
+
+3.
+mysql> alter table gardener add column Exper int(30);
+Query OK, 0 rows affected, 1 warning (5.16 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from gardener;
++------------+--------+------+-------+
+| gardenerid | name   | age  | Exper |
++------------+--------+------+-------+
+|          0 | Mother |   36 |  NULL |
+|          1 | Father |   38 |  NULL |
+|          2 | Tim    |   15 |  NULL |
+|          3 | Erin   |   12 |  NULL |
++------------+--------+------+-------+
+
+4.
+mysql> select name,plantid from plant p join planted pp on p.plantid=pp.plantfk where seeds<20 and date1="2012-04-14";mysql> select g.name from gardener g join planted p1 join picked p2 on g.gardenerid=p1.gardenerfk and p1.plantfk=p2.plantfk and p1.gardenerfk=p2.gardenerfk and p1.locationfk=p2.locationfk group by g.name;
++--------+
+| name   |
++--------+
+| Father |
+| Tim    |
++--------+
++--------+---------+
+| name   | plantid |
++--------+---------+
+| Carrot |       0 |
++--------+---------+
+
+5.
+mysql> select name ,sunlight,water from plant where name like "c%" or name like "r%";
++--------+----------+-------+
+| name   | sunlight | water |
++--------+----------+-------+
+| Carrot |     0.26 |  0.82 |
+| Corn   |     0.44 |  0.76 |
+| Radish |     0.28 |  0.84 |
++--------+----------+-------+
+
+6.
+mysql> select name,sum(seeds) from planted join plant on plantid=plantfk group by plantfk order by name desc;
++---------+------------+
+| name    | sum(seeds) |
++---------+------------+
+| Tomato  |         38 |
+| Radish  |         30 |
+| Lettuce |         30 |
+| Corn    |         32 |
+| Carrot  |         42 |
+| Beet    |         36 |
++---------+------------+
+
+7.
+mysql> select plantid,name,(sum(amount)/sum(seeds)) as avg_items from picked p1,planted p2,plant p where p1.plantfk=p2.plantfk and p2.plantfk=p.plantid group by plantid;
++---------+--------+-----------+
+| plantid | name   | avg_items |
++---------+--------+-----------+
+|       0 | Carrot |    0.9524 |
+|       2 | Corn   |    2.1875 |
+|       3 | Tomato |    0.3947 |
+|       4 | Radish |    0.7667 |
++---------+--------+-----------+
+
+8.
+mysql> select g.name,p.name,date1 as date,amount from gardener g join plant p join picked pp on g.gardenerid=pp.gardenerfk and p.plantid=pp.plantfk and pp.gardenerfk=g.gardenerid where g.name = "Tim" and amount>20 order by amount;
++------+--------+------------+--------+
+| name | name   | date       | amount |
++------+--------+------------+--------+
+| Tim  | Radish | 2012-07-16 |     23 |
+| Tim  | Carrot | 2012-08-18 |     28 |
++------+--------+------------+--------+
+
+9.
+mysql> select g.name from gardener g join planted p1 join picked p2 on g.gardenerid=p1.gardenerfk and p1.plantfk=p2.plantfk and p1.gardenerfk=p2.gardenerfk and p1.locationfk=p2.locationfk group by g.name;
++--------+
+| name   |
++--------+
+| Father |
+| Tim    |
++--------+
+
+10.
+mysql> select p1.name from plant p1 join picked p2 join location l on p1.plantid=p2.plantfk and p2.locationfk=l.locationid where l.name!="west" and month(date1)=08 group by plantfk;
++--------+
+| name   |
++--------+
+| Carrot |
+| Tomato |
+| Corn   |
++--------+
